@@ -2,6 +2,9 @@ package org.example.bzhl.drug.service;
 
 import org.example.bzhl.model.DrugInfo;
 import com.baomidou.mybatisplus.extension.service.IService;
+import org.example.bzhl.vo.DrugInfoVo;
+
+import java.util.List;
 
 /**
 * @author LiJia
@@ -10,4 +13,13 @@ import com.baomidou.mybatisplus.extension.service.IService;
 */
 public interface DrugInfoService extends IService<DrugInfo> {
 
+    void insert(DrugInfoVo drugInfoVo);
+
+    void delete(String drugId, String drugName, String business);
+
+    List<DrugInfo> select();
+
+    List<DrugInfo> selectByBus(String business);
+
+    boolean updateByBus(DrugInfoVo drugInfoVo);
 }
