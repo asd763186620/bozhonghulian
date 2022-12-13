@@ -2,6 +2,7 @@ package org.example.bzhl.user.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import org.example.bzhl.model.UserInfo;
+import org.example.bzhl.vo.UserInfoRegisterVo;
 
 /**
 * @author LiJia
@@ -10,4 +11,7 @@ import org.example.bzhl.model.UserInfo;
 */
 public interface UserInfoService extends IService<UserInfo> {
 
+    String login(String userId,String userPassword);
+
+    void register(UserInfoRegisterVo userInfoRegisterVo);
 }

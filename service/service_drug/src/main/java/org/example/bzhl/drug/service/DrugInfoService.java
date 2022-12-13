@@ -1,8 +1,9 @@
 package org.example.bzhl.drug.service;
 
-import org.example.bzhl.model.DrugInfo;
 import com.baomidou.mybatisplus.extension.service.IService;
+import org.example.bzhl.model.DrugInfo;
 import org.example.bzhl.vo.DrugInfoVo;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -22,4 +23,6 @@ public interface DrugInfoService extends IService<DrugInfo> {
     List<DrugInfo> selectByBus(String business);
 
     boolean updateByBus(DrugInfoVo drugInfoVo);
+
+    void importDictData(MultipartFile file);
 }

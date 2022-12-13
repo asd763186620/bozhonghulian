@@ -1,14 +1,19 @@
 package org.example.bzhl.drug.service.impl;
 
+import com.alibaba.excel.EasyExcel;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import org.example.bzhl.drug.listener.ExcelListener;
 import org.example.bzhl.drug.mapper.DrugInfoMapper;
 import org.example.bzhl.drug.service.DrugInfoService;
 import org.example.bzhl.model.DrugInfo;
 import org.example.bzhl.vo.DrugInfoVo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 
@@ -21,6 +26,8 @@ import java.util.List;
 @Service
 public class DrugInfoServiceImpl extends ServiceImpl<DrugInfoMapper, DrugInfo>
     implements DrugInfoService {
+    @Autowired
+    private ExcelListener excelListener;
 
     /**
      * 新增药品
@@ -96,6 +103,18 @@ public class DrugInfoServiceImpl extends ServiceImpl<DrugInfoMapper, DrugInfo>
         drugInfo.setDrugType(drugInfoVo.getDrugType());
         drugInfo.setUpdateTime(new Date());
         return this.updateById(drugInfo);
+    }
+
+    @Override
+    public void importDictData(MultipartFile file) {
+        try {
+            EasyExcel
+                    .read(file.getInputStream(),DrugInfo.class,excelListener)
+                    .sheet("药品信息")
+                    .doRead();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 

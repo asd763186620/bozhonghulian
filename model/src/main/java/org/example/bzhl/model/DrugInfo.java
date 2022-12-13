@@ -1,9 +1,11 @@
 package org.example.bzhl.model;
 
+
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
@@ -54,11 +56,6 @@ public class DrugInfo implements Serializable {
      * 修改时间
      */
     private Date updateTime;
-
-    /**
-     * 是否删除
-     */
-    private Integer isDeleted;
 
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;
@@ -175,19 +172,6 @@ public class DrugInfo implements Serializable {
         this.updateTime = updateTime;
     }
 
-    /**
-     * 是否删除
-     */
-    public Integer getIsDeleted() {
-        return isDeleted;
-    }
-
-    /**
-     * 是否删除
-     */
-    public void setIsDeleted(Integer isDeleted) {
-        this.isDeleted = isDeleted;
-    }
 
     @Override
     public boolean equals(Object that) {
@@ -208,8 +192,7 @@ public class DrugInfo implements Serializable {
             && (this.getBusiness() == null ? other.getBusiness() == null : this.getBusiness().equals(other.getBusiness()))
             && (this.getDrugType() == null ? other.getDrugType() == null : this.getDrugType().equals(other.getDrugType()))
             && (this.getCreateTime() == null ? other.getCreateTime() == null : this.getCreateTime().equals(other.getCreateTime()))
-            && (this.getUpdateTime() == null ? other.getUpdateTime() == null : this.getUpdateTime().equals(other.getUpdateTime()))
-            && (this.getIsDeleted() == null ? other.getIsDeleted() == null : this.getIsDeleted().equals(other.getIsDeleted()));
+            && (this.getUpdateTime() == null ? other.getUpdateTime() == null : this.getUpdateTime().equals(other.getUpdateTime()));
     }
 
     @Override
@@ -224,7 +207,6 @@ public class DrugInfo implements Serializable {
         result = prime * result + ((getDrugType() == null) ? 0 : getDrugType().hashCode());
         result = prime * result + ((getCreateTime() == null) ? 0 : getCreateTime().hashCode());
         result = prime * result + ((getUpdateTime() == null) ? 0 : getUpdateTime().hashCode());
-        result = prime * result + ((getIsDeleted() == null) ? 0 : getIsDeleted().hashCode());
         return result;
     }
 
@@ -242,7 +224,6 @@ public class DrugInfo implements Serializable {
         sb.append(", drugType=").append(drugType);
         sb.append(", createTime=").append(createTime);
         sb.append(", updateTime=").append(updateTime);
-        sb.append(", isDeleted=").append(isDeleted);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

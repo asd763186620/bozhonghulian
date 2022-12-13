@@ -1,5 +1,6 @@
 package org.example.bzhl.drug.controller;
 
+import com.baomidou.mybatisplus.extension.api.R;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.example.bzhl.drug.service.DrugInfoService;
@@ -8,6 +9,7 @@ import org.example.bzhl.vo.DrugInfoVo;
 import org.example.util.result.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -105,5 +107,16 @@ public class DrugInfoController {
         }else{
             return Result.fail();
         }
+    }
+
+    /**
+     * excel导入
+     * @param file
+     * @return
+     */
+    @PostMapping("/importData")
+    public Result importData(MultipartFile file){
+        drugInfoService.importDictData(file);
+        return Result.ok();
     }
 }

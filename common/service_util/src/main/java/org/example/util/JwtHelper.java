@@ -19,7 +19,7 @@ public class JwtHelper {
     //创建用户id和用户名称，创建jwt令牌
     public static String createToken(Long userId, String userName) {
         String token = Jwts.builder()
-                .setSubject("BZHL-USER")
+                .setSubject("bzhl-user")
                 .setExpiration(new Date(System.currentTimeMillis() + tokenExpiration))
                 .claim("userId", userId)
                 .claim("userName", userName)

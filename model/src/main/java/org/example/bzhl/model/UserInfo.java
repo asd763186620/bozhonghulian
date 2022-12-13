@@ -17,12 +17,12 @@ public class UserInfo implements Serializable {
      * 编号
      */
     @TableId(type = IdType.AUTO)
-    private Integer id;
+    private Long id;
 
     /**
      * 用户账号
      */
-    private Integer userId;
+    private String userId;
 
     /**
      * 用户昵称
@@ -47,7 +47,6 @@ public class UserInfo implements Serializable {
     /**
      * 是否删除
      */
-    private Integer isDeleted;
 
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;
@@ -55,28 +54,28 @@ public class UserInfo implements Serializable {
     /**
      * 编号
      */
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
     /**
      * 编号
      */
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
     /**
      * 用户账号
      */
-    public Integer getUserId() {
+    public String getUserId() {
         return userId;
     }
 
     /**
      * 用户账号
      */
-    public void setUserId(Integer userId) {
+    public void setUserId(String userId) {
         this.userId = userId;
     }
 
@@ -136,20 +135,6 @@ public class UserInfo implements Serializable {
         this.updateTime = updateTime;
     }
 
-    /**
-     * 是否删除
-     */
-    public Integer getIsDeleted() {
-        return isDeleted;
-    }
-
-    /**
-     * 是否删除
-     */
-    public void setIsDeleted(Integer isDeleted) {
-        this.isDeleted = isDeleted;
-    }
-
     @Override
     public boolean equals(Object that) {
         if (this == that) {
@@ -167,8 +152,7 @@ public class UserInfo implements Serializable {
             && (this.getUserName() == null ? other.getUserName() == null : this.getUserName().equals(other.getUserName()))
             && (this.getUserPassword() == null ? other.getUserPassword() == null : this.getUserPassword().equals(other.getUserPassword()))
             && (this.getCreateTime() == null ? other.getCreateTime() == null : this.getCreateTime().equals(other.getCreateTime()))
-            && (this.getUpdateTime() == null ? other.getUpdateTime() == null : this.getUpdateTime().equals(other.getUpdateTime()))
-            && (this.getIsDeleted() == null ? other.getIsDeleted() == null : this.getIsDeleted().equals(other.getIsDeleted()));
+            && (this.getUpdateTime() == null ? other.getUpdateTime() == null : this.getUpdateTime().equals(other.getUpdateTime()));
     }
 
     @Override
@@ -181,7 +165,6 @@ public class UserInfo implements Serializable {
         result = prime * result + ((getUserPassword() == null) ? 0 : getUserPassword().hashCode());
         result = prime * result + ((getCreateTime() == null) ? 0 : getCreateTime().hashCode());
         result = prime * result + ((getUpdateTime() == null) ? 0 : getUpdateTime().hashCode());
-        result = prime * result + ((getIsDeleted() == null) ? 0 : getIsDeleted().hashCode());
         return result;
     }
 
@@ -197,7 +180,6 @@ public class UserInfo implements Serializable {
         sb.append(", userPassword=").append(userPassword);
         sb.append(", createTime=").append(createTime);
         sb.append(", updateTime=").append(updateTime);
-        sb.append(", isDeleted=").append(isDeleted);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();
